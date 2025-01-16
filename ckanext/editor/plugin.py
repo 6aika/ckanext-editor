@@ -9,7 +9,6 @@ class EditorPlugin(plugins.SingletonPlugin, DefaultTranslation):
     plugins.implements(plugins.IConfigurer)
     plugins.implements(plugins.IConfigurable)
     plugins.implements(plugins.ITemplateHelpers)
-    plugins.implements(plugins.IRoutes, inherit=True)
     if toolkit.check_ckan_version(min_version='2.5.0'):
         plugins.implements(plugins.ITranslation, inherit=True)
     plugins.implements(plugins.IBlueprint)
