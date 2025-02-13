@@ -137,7 +137,7 @@ class EditorView(MethodView):
                                'user': g.user, 'for_view': True,
                                'auth_user_obj': g.userobj, 'use_cache': False}
 
-                    group_ref = request.POST.get('group')
+                    group_ref = request.form.get('group')
 
                     data_dict = {"id": group_ref,
                                  "object": id,
