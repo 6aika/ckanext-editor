@@ -131,7 +131,7 @@ def get_editable_fields():
                    'user': g.user, 'for_view': True,
                    'auth_user_obj': g.userobj, 'use_cache': False}
 
-        users_groups = get_action('group_list_authz')(context, {})
+        users_groups = get_action('group_list_authz')(context, {"type": "collection"})
 
         g.collection_dropdown = [[group['id'], group['display_name']]
                                  for group in users_groups if
