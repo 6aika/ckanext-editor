@@ -37,11 +37,13 @@ def append_package_value(package, edit_params):
         package[field] += edit_params['field_value']
     # Otherwise we can just append the value to the old
     else:
+        value = request.form[field]
+        if format_as_tags:
+            value = request.form[field].split(',')
         if field not in package:
-            package[field] = request.form[field]
+            package[field] = value
         else:
-            package[field] += request.form[field]
-
+            package[field] += value
     return package
 
 
