@@ -99,32 +99,12 @@ class EditorView(MethodView):
             # values with the same key
             values = []
             if edit_params['field'] == 'external_urls':
-                for k, v in request.form.items():
-                    if k == 'external_urls':
-                        values.append(v)
-                edit_params['field_value'] = values
+                edit_params['field_value'] = request.form.getlist('external_urls')
 
         except ValidationError:
             return abort(409, _('Validation error'))
         except KeyError as e:
             toolkit.redirect_to('editor.search', **request.params)
-
-        formats = []
-        coverages = []
-        groups = []
-        organizations = []
-        collections = []
-        for k, v in request.params.items():
-            if k == 'res_format':
-                formats.append(v)
-            elif k == 'vocab_geographical_coverage':
-                coverages.append(v)
-            elif k == 'groups':
-                groups.append(v)
-            elif k == 'organization':
-                organizations.append(v)
-            elif k == 'collections':
-                collections.append(v)
 
         for id in edit_params['package_ids']:
             try:
