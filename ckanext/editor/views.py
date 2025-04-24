@@ -58,14 +58,6 @@ class EditorView(MethodView):
 
         g.selected_field, g.selected_field_appendable = selected_field()
 
-
-        try:
-            context = {'model': model, 'user': g.user,
-                       'auth_user_obj': g.userobj}
-            check_access('site_read', context)
-        except NotAuthorized:
-            abort(403, _('Not authorized to see this page'))
-
         package_type = 'dataset'
 
         extra_vars = _search()
@@ -175,15 +167,6 @@ def _search():
 
     extra_vars = {}
 
-    try:
-        context = {
-            u'model': model,
-            u'user': g.user,
-            u'auth_user_obj': g.userobj
-        }
-        check_access(u'site_read', context)
-    except NotAuthorized:
-        abort(403, _(u'Not authorized to see this page'))
 
     # unicode format (decoded from utf8)
     extra_vars[u'q'] = q = request.args.get(u'q', u'')
