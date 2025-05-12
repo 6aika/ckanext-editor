@@ -95,7 +95,7 @@ msgstr "Korvaa vanha arvo syötetyllä arvolla"
 
 #: ckanext/editor/templates/editor/editor_base.html:37
 msgid "Remove entered value if found"
-msgstr "Poista arvo, jos se on olemassa"
+msgstr "Poista mahdollinen arvo"
 
 #: ckanext/editor/templates/editor/editor_base.html:41
 msgid "The entered field value will replace the old value if it exists"
